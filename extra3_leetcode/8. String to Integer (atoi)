@@ -1,0 +1,23 @@
+#include <sstream>
+class Solution {
+public:
+    bool AllSpace(string str)
+    {
+        for (char i : str)
+            if (i != ' ')
+                return false;
+        return true;
+    }
+    
+    int myAtoi(string str) 
+    {
+        if (str.size() && !AllSpace(str))
+        {
+            stringstream s(str);
+            int number;
+            s >> number;
+            return number;
+        }
+        return 0;
+    }
+};
