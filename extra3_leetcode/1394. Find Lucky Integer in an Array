@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int findLucky(const vector<int>& arr) 
+    {
+        map<int,int> nums;
+        for(const auto& i: arr)
+            nums[i]++;
+        int result = -1;
+        for(const auto& i: nums)
+            if(i.first == i.second)
+                result = max(result,i.first);
+        return result;
+    }
+};
