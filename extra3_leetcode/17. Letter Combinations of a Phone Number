@@ -1,0 +1,41 @@
+class Solution {
+public:
+    vector<string> letterCombinations(string digits) 
+    {
+        map<int, string> connection;
+        connection[1] = "";
+        connection[2] = "abc";
+        connection[3] = "def";
+        connection[4] = "ghi";
+        connection[5] = "jkl";
+        connection[6] = "mno";
+        connection[7] = "pqrs";
+        connection[8] = "tuv";
+        connection[9] = "wxyz";
+        vector<string> res;
+        if(count(digits.begin(), digits.end(), '0') && count(digits.begin(), digits.end(), '0'))
+            return res;
+        for (char i : digits)
+        {
+            if (res.size())
+            {
+                vector<string> new_res;
+                for (auto j : res)
+                    for (char k : connection[i-'0'])
+                        new_res.push_back(j+k);
+                res = new_res;
+            }
+            else
+            {
+                for (char k : connection[i-'0'])
+                {
+                    string line = "";
+                    line += k;
+                    res.push_back("" + line);
+                }
+            }
+        }
+        sort(res.begin(), res.end());
+        return res;
+    }
+};
