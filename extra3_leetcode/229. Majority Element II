@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) 
+    {
+        map<int,int> numbs;
+        for (const auto& i : nums)
+        {
+            numbs[i]++;
+        }
+        vector<int> result;
+        for (const auto& i : numbs)
+            if (numbs[i.first] > nums.size()/3)
+                result.push_back(i.first);
+        return result;
+    }
+};
