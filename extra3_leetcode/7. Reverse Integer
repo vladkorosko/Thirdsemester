@@ -1,0 +1,31 @@
+class Solution 
+{
+public:
+    int rev(int x, bool sign)
+    {
+        long int result = 0;
+        long int rev = x;
+        if (!sign)
+            rev *= -1;
+        while(rev > 0)
+        {
+            int a = rev%10;
+            result *= 10;
+            result += a;
+            rev/=10;
+        }
+        if (!sign)
+            result *=(-1);
+        if (result > 2147483647 || result < -2147483648)
+            return 0;
+        return result;
+    }
+    
+    int reverse(int x) 
+    {
+        int result = 0;
+        bool sign = x >= 0;
+        result = rev(x,sign);
+        return result;
+    }
+};
