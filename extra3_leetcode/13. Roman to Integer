@@ -1,0 +1,51 @@
+class Solution {
+public:
+    int romanToInt(string s) 
+    {
+        int res = 0;
+        while(s.size())
+        {
+            char fs = s[0];
+            char sd = s[1];
+            string cm = "";
+            cm += fs;
+            cm += sd;
+            if (cm == "IV"|| cm == "IX" || cm == "XL" || cm == "XC" || cm == "CD" || cm == "CM")
+            {
+                if (cm == "IV")
+                    res += 4;
+                if (cm == "IX")
+                    res += 9;
+                if (cm == "XL")
+                    res += 40;
+                if (cm == "XC")
+                    res += 90;
+                if (cm == "CD")
+                    res += 400;
+                if (cm == "CM")
+                    res += 900;
+                s.erase(s.begin());
+                s.erase(s.begin());
+            }
+            else
+            {
+                if (fs == 'I')
+                    res +=1;
+                if (fs == 'V')
+                    res += 5;
+                if (fs == 'X')
+                    res += 10;
+                if (fs == 'L')
+                    res += 50;
+                if (fs == 'C')
+                    res += 100;
+                if (fs == 'D')
+                    res += 500;
+                if (fs == 'M')
+                    res += 1000;
+                s.erase(s.begin());
+            }                
+        }
+        return res;
+    }
+};
